@@ -1,0 +1,47 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3273BF;
+}
+
+.headerInput {
+    margin-bottom: .5rem;
+}
+
+.headerInput input {
+    font-size: 1.5rem;
+    text-indent: 1rem;
+    height: 4rem;
+}
+
+::-webkit-input-placeholder {
+    font-family: 'Spartan';
+}
+
+.headerInput button {
+    margin-left: 1rem;
+    border: none;
+    font-size: 1.5rem;
+    background-color: #1B5699;
+    color: white;
+    height: 4.7rem;
+    width: 12.5rem;
+    letter-spacing: .1rem;
+}
+
+.headerInput button:hover {
+    cursor: pointer;
+}
+
+.headerMain h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.headerMain h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 1rem;
+}

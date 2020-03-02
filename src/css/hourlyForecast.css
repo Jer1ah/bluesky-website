@@ -1,0 +1,42 @@
+.hourlyForecast {
+    margin-top: 7.5rem;
+}
+
+.hourlyForecast h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+.hourlyForecastList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    list-style: none;
+}
+
+.hourlyForecastListItem {
+    width: 15rem;
+    height: 18rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #1B5699;
+}
+
+.hourlyForecastListItem img {
+    width: 7rem;
+}
+
+.hourlyForecastListItem h3 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 2.5rem 0 0;
+}
+
+.hourlyForecastListItem h5 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: 2rem 0 0 .85rem;
+}

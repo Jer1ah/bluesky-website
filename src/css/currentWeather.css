@@ -1,0 +1,61 @@
+.currentWeather {
+    display: flex;
+    height: 20rem;
+    background-color: #1B5699;
+}
+
+.currentWeatherMain {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: white solid .1rem;
+}
+
+.currentWeatherMain img {
+    height: 16rem;
+    margin-right: 2.5rem;
+}
+
+.currentWeatherMain h1 {
+    font-size: 8rem;
+    font-weight: 300;
+    margin: 1.5rem 0 0;
+}
+
+.currentWeatherMain h5 {
+    font-size: 1.85rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+.currentWeatherAside {
+    flex: 1;
+}
+
+.conditionsList {
+    list-style: none;
+    padding: 0;
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.conditionItem {
+    width: 7rem;
+    margin: 1.2rem 3rem;
+}
+
+.conditionItem h3 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.conditionItem h5 {
+    font-size: 1.7rem;
+    font-weight: 300;
+    margin: 1rem 0 0;
+}

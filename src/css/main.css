@@ -1,0 +1,14 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+    font-family: 'Spartan';
+    background-color: #3273BF;
+    color: white;
+}
+
+.app {
+    width: 100rem;
+    margin: 3.5rem auto 0;
+}
