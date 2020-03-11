@@ -14,7 +14,7 @@ class Header extends React.Component {
         return (
             <div className='header'>
                 <div className='headerMain'>
-                    <h1>Mount Pleasant</h1>
+                    <h1>{this.props.currentCity}</h1>
                     <h3>{ this.props.currentDate }</h3>
                 </div>
                 <div className='headerInput'>
@@ -28,7 +28,8 @@ class Header extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentDate: state.currentDate
+        currentDate: state.currentDate,
+        currentCity: state.currentWeather.name,
     }
 };
 
