@@ -13,11 +13,11 @@ export const getCurrentHours = () => {
         type: 'GET_HOURS',
         payload: [ 
             moment().format('ha'),
-            moment().add(1, 'hour').format('ha'), 
-            moment().add(2, 'hour').format('ha'), 
-            moment().add(3, 'hour').format('ha'),
-            moment().add(4, 'hour').format('ha'),
-            moment().add(5, 'hour').format('ha')
+            moment().add(3, 'hour').format('ha'), 
+            moment().add(6, 'hour').format('ha'), 
+            moment().add(9, 'hour').format('ha'),
+            moment().add(12, 'hour').format('ha'),
+            moment().add(15, 'hour').format('ha')
         ]
     };
 };
@@ -39,6 +39,13 @@ export const getCurrentWeather = () => {
     return async (dispatch) => {
         const data = await axios.get('http://api.openweathermap.org/data/2.5/weather?zip=28124&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial');
         dispatch({ type: 'GET_CURRENT_WEATHER', payload: data.data });
+    };
+};
+
+export const getHourlyForecast = () => {
+    return async (dispatch) => {
+        const data = await axios.get('http://api.openweathermap.org/data/2.5/forecast?zip=28124&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial');
+        dispatch({ type: 'GET_HOURLY', payload: data.data.list });
     };
 };
 

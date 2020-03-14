@@ -6,20 +6,20 @@ const dailyForecast = (props) => {
             <h5 className='day'>{props.day}</h5>
             <img src={props.weatherIcon} alt='Weather Icon' />
             <div className='lowTemp'>
-                <h4>12&deg;</h4>
+                <h4>{props.lowTemp}&deg;</h4>
                 <h5>Low</h5>
             </div>
             <div className='highTemp'>
-                <h4>27&deg;</h4>
+                <h4>{props.highTemp}&deg;</h4>
                 <h5>High</h5>
             </div>
             <div className='wind'>
-                <h4>17mph</h4>
+                <h4>{props.wind}mph</h4>
                 <h5>Wind</h5>
             </div>
             <div className='rain'>
-                <h4>12%</h4>
-                <h5>Rain</h5>
+                <h4>{props.humidity}%</h4>
+                <h5>Humidity</h5>
             </div>
         </li>
     );

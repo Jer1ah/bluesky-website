@@ -12,18 +12,25 @@ class WeeklyForecast extends React.Component {
     }
 
     render() {
-        const daily = this.props.days.map((day) => {
-            return <DailyForecast 
-                        day={day}
-                        weatherIcon={weatherIcon}
-                    />
-        });
+        let daily;
+        if( this.props.currentTemps[1] ) {
+            daily = this.props.days.map((day, index) => {
+                return <DailyForecast 
+                            day={day}
+                            weatherIcon={weatherIcon}
+                            highTemp={Math.ceil(this.props.currentTemps[index + 3].main.temp_max)}
+                            lowTemp={Math.floor(this.props.currentTemps[index + 3].main.temp_min)}
+                            wind={Math.floor(this.props.currentTemps[index + 3].wind.speed)}
+                            humidity={Math.floor(this.props.currentTemps[index + 3].main.humidity)}
+                        />
+            });
+        }
 
         return (
             <div className='weeklyForecast'>
                 <h1>Next 5 Days</h1>
                 <ul className='weeklyForecastList'>
-                    { daily }
+                    { daily ? daily : null}
                 </ul>
             </div>
         );
@@ -32,7 +39,8 @@ class WeeklyForecast extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        days: state.days
+        days: state.days,
+        currentTemps: state.hourlyForecast
     };
 };
 

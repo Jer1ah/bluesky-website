@@ -2,29 +2,33 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import HourForecast from '../components/HourForecast';
-import { getCurrentHours } from '../actions';
+import { getCurrentHours, getHourlyForecast } from '../actions';
 import weatherIcon from '../img/weather.svg';
 import '../css/hourlyForecast.css';
 
 class HourlyForecast extends React.Component {
     componentDidMount() {
+        this.props.getHourlyForecast();
         this.props.getCurrentHours();
     }
 
     render() {
-        const hourlyForecast = this.props.currentHours.map((hour) => {
-            return <HourForecast
-                        hour={hour}
-                        weatherIcon={weatherIcon}
-                        temperature='26'
-                    />
-        });
+        let hourlyForecast;
+        if( this.props.currentHours && this.props.currentTemps[0] ) {
+            hourlyForecast = this.props.currentHours.map((hour, index) => {
+                return <HourForecast
+                            hour={hour}
+                            weatherIcon={weatherIcon}
+                            temperature={Math.floor(this.props.currentTemps[index].main.temp)}
+                        />
+                });
+        }
 
         return (
             <div className='hourlyForecast'>
                 <h1>Hourly Forecast</h1>
                 <ul className='hourlyForecastList'>
-                    { hourlyForecast }
+                    { hourlyForecast ? hourlyForecast : null }
                 </ul>
             </div>
         );
@@ -33,10 +37,13 @@ class HourlyForecast extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentHours: state.currentHours
-    }
+        currentHours: state.currentHours,
+        currentTemps: state.hourlyForecast
+    } 
 };
 
 export default connect(mapStateToProps, {
-    getCurrentHours
+    getCurrentHours,
+    getHourlyForecast
 })(HourlyForecast);
+
