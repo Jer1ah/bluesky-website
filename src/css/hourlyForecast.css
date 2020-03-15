@@ -26,7 +26,8 @@
 }
 
 .hourlyForecastListItem img {
-    width: 7rem;
+    width: 6.6rem;
+    margin-top: .5rem;
 }
 
 .hourlyForecastListItem h3 {

@@ -2,8 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getCurrentWeather } from '../actions';
-import weatherIcon from '../img/weather.svg';
 import '../css/currentWeather.css';
+
+import sunnyIcon from '../img/sun.svg';
+import moonIcon from '../img/moon.svg';
+import cloudsIcon from '../img/clouds.svg';
+import partlyCloudyIcon from '../img/cloudy.svg';
+import partlyCloudyNightIcon from '../img/cloudy-night.svg';
+import rainIcon from '../img/rain.svg';
+import thunderstormIcon from '../img/thunderstorm.svg';
+import snowIcon from '../img/snow.svg';
 
 class CurrentWeather extends React.Component {
     componentDidMount() {
@@ -11,13 +19,73 @@ class CurrentWeather extends React.Component {
     }
 
     render() {
+        let weatherIcon;
+        switch(this.props.weatherIcon) {
+            case '01d':
+                weatherIcon = sunnyIcon;
+                break;
+            case '01n':
+                weatherIcon = moonIcon;
+                break;
+            case '02d':
+                weatherIcon = partlyCloudyIcon;
+                break;
+            case '02n':
+                weatherIcon = partlyCloudyNightIcon;
+                break;
+            case '03d': 
+                weatherIcon = cloudsIcon;
+                break;
+            case '03n':
+                weatherIcon = cloudsIcon;
+                break;
+            case '04d':
+                weatherIcon = cloudsIcon;
+                break;
+            case '04n':
+                weatherIcon = cloudsIcon;
+                break;
+            case '09d':
+                weatherIcon = rainIcon;
+                break;
+            case '09n':
+                weatherIcon = rainIcon;
+                break;
+            case '10d':
+                weatherIcon = rainIcon;
+                break;
+            case '10n':
+                weatherIcon = rainIcon;
+                break;
+            case '11d':
+                weatherIcon = thunderstormIcon;
+                break;
+            case '11n':
+                weatherIcon = thunderstormIcon;
+                break;
+            case '13d':
+                weatherIcon = snowIcon;
+                break;
+            case '13n':
+                weatherIcon = snowIcon;
+                break;
+            case '50d':
+                weatherIcon = rainIcon;
+                break;
+            case '50n':
+                weatherIcon = rainIcon; 
+                break;
+            default:
+                weatherIcon = sunnyIcon;
+        }
+
         return (
             <div className='currentWeather'>
                 <div className='currentWeatherMain'>
                     <img src={weatherIcon} alt='Weather Icon'/>
                     <div className='currentTemp'>
                         <h1>{this.props.currentTemp}&deg;</h1>
-                        <h5>Mostly Sunny</h5>
+                        <h5>{this.props.currentCondition}</h5>
                     </div> {/* .currentTemp end */}
                 </div> {/* .currentMain end */}
                 <div className='currentWeatherAside'>
@@ -69,12 +137,14 @@ const mapStateToProps = (state) => {
     if(state.currentWeather.main) {
         return {
             currentTemp: Math.floor(state.currentWeather.main.temp),
+            currentCondition: state.currentWeather.weather[0].description,
             highTemp: Math.floor(state.currentWeather.main.temp_max),
             lowTemp: Math.floor(state.currentWeather.main.temp_min),
             wind: Math.floor(state.currentWeather.wind.speed),
             humidity: state.currentWeather.main.humidity,
             sunrise: sunriseString,
-            sunset: sunsetString
+            sunset: sunsetString,
+            weatherIcon: state.currentWeather.weather[0].icon,
         };
     } else {
         return {};
