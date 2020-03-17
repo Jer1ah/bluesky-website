@@ -45,10 +45,20 @@ const hourlyForecastReducer = (state=[], action) => {
     }
 };
 
+const userInputReducer = (state='', action) => {
+    switch(action.type) {
+        case 'GET_INPUT':
+            return action.payload   
+        default:
+            return state;
+    };
+};
+
 export default combineReducers({
     currentDate: dateReducer,
     currentHours: hourReducer,
     days: dayReducer,
     currentWeather: currentWeatherReducer,
-    hourlyForecast: hourlyForecastReducer
+    hourlyForecast: hourlyForecastReducer,
+    userInput: userInputReducer
 });

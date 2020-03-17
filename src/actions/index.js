@@ -42,10 +42,31 @@ export const getCurrentWeather = () => {
     };
 };
 
+export const getCustomCurrentWeather = (zipcode) => {
+    return async (dispatch) => {
+        const data = await axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial`);
+        dispatch({ type: 'GET_CURRENT_WEATHER', payload: data.data });
+    };
+};
+
 export const getHourlyForecast = () => {
     return async (dispatch) => {
         const data = await axios.get('http://api.openweathermap.org/data/2.5/forecast?zip=28124&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial');
         dispatch({ type: 'GET_HOURLY', payload: data.data.list });
+    };
+};
+
+export const getCustomHourlyForecast = (zipcode) => {
+    return async (dispatch) => {
+        const data = await axios.get(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipcode}&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial`);
+        dispatch({ type: 'GET_HOURLY', payload: data.data.list });
+    };
+};
+
+export const updateZipcode = (userInput) => {
+    return {
+        type: 'GET_INPUT',
+        payload: userInput
     };
 };
 
