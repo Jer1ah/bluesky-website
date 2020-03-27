@@ -37,7 +37,7 @@ export const getWeeklyForecast = () => {
 
 export const getCurrentWeather = () => {
     return async (dispatch) => {
-        const data = await axios.get('http://api.openweathermap.org/data/2.5/weather?zip=28124&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial');
+        const data = await axios.get('http://api.openweathermap.org/data/2.5/weather?zip=28205&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial');
         dispatch({ type: 'GET_CURRENT_WEATHER', payload: data.data });
     };
 };
@@ -51,7 +51,7 @@ export const getCustomCurrentWeather = (zipcode) => {
 
 export const getHourlyForecast = () => {
     return async (dispatch) => {
-        const data = await axios.get('http://api.openweathermap.org/data/2.5/forecast?zip=28124&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial');
+        const data = await axios.get('http://api.openweathermap.org/data/2.5/forecast?zip=28205&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial');
         dispatch({ type: 'GET_HOURLY', payload: data.data.list });
     };
 };
