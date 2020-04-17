@@ -14,71 +14,123 @@ import thunderstormIcon from '../img/thunderstorm.svg';
 import snowIcon from '../img/snow.svg';
 
 class CurrentWeather extends React.Component {
-    componentDidMount() {
-        this.props.getCurrentWeather();
-    }
-
     render() {
         let weatherIcon;
         switch(this.props.weatherIcon) {
-            case '01d':
+            case 1:
                 weatherIcon = sunnyIcon;
                 break;
-            case '01n':
-                weatherIcon = moonIcon;
+            case 2:
+                weatherIcon = sunnyIcon;
                 break;
-            case '02d':
+            case 3:
+                weatherIcon = sunnyIcon;
+                break;
+            case 4:
                 weatherIcon = partlyCloudyIcon;
                 break;
-            case '02n':
+            case 5:
+                weatherIcon = partlyCloudyIcon;
+                break;
+            case 6:
+                weatherIcon = partlyCloudyIcon;
+                break;
+            case 7:
+                weatherIcon = cloudsIcon;
+                break;
+            case 8:
+                weatherIcon = cloudsIcon;
+                break;
+            case 11:
+                weatherIcon = cloudsIcon;
+                break;
+            case 18:
+                weatherIcon = rainIcon;
+                break;
+            case 12:
+                weatherIcon = rainIcon;
+                break;
+            case 13:
+                weatherIcon = rainIcon;
+                break;
+            case 14:
+                weatherIcon = rainIcon;
+                break;
+            case 24:
+                weatherIcon = rainIcon;
+                break;
+            case 25:
+                weatherIcon = rainIcon;
+                break;
+            case 26:
+                weatherIcon = rainIcon;
+                break;
+            case 29:
+                weatherIcon = rainIcon;
+                break;
+            case 15:
+                weatherIcon = thunderstormIcon;
+                break;
+            case 16:
+                weatherIcon = thunderstormIcon;
+                break;
+            case 17:
+                weatherIcon = thunderstormIcon;
+                break;
+            case 19:
+                weatherIcon = snowIcon;
+                break;
+            case 20:
+                weatherIcon = snowIcon;
+                break;
+            case 21:
+                weatherIcon = snowIcon;
+                break;
+            case 22:
+                weatherIcon = snowIcon;
+                break;
+            case 23:
+                weatherIcon = snowIcon;
+                break;
+            case 33:
+                weatherIcon = moonIcon;
+                break;
+            case 34:
+                weatherIcon = moonIcon;
+                break;
+            case 35:
                 weatherIcon = partlyCloudyNightIcon;
                 break;
-            case '03d': 
-                weatherIcon = cloudsIcon;
+            case 36:
+                weatherIcon = partlyCloudyNightIcon;
                 break;
-            case '03n':
-                weatherIcon = cloudsIcon;
+            case 37:
+                weatherIcon = partlyCloudyNightIcon;
                 break;
-            case '04d':
-                weatherIcon = cloudsIcon;
+            case 38:
+                weatherIcon = partlyCloudyNightIcon;
                 break;
-            case '04n':
-                weatherIcon = cloudsIcon;
-                break;
-            case '09d':
+            case 39:
                 weatherIcon = rainIcon;
                 break;
-            case '09n':
+            case 40:
                 weatherIcon = rainIcon;
                 break;
-            case '10d':
-                weatherIcon = rainIcon;
-                break;
-            case '10n':
-                weatherIcon = rainIcon;
-                break;
-            case '11d':
+            case 41:
                 weatherIcon = thunderstormIcon;
                 break;
-            case '11n':
+            case 42:
                 weatherIcon = thunderstormIcon;
                 break;
-            case '13d':
+            case 43:
                 weatherIcon = snowIcon;
                 break;
-            case '13n':
+            case 44:
                 weatherIcon = snowIcon;
-                break;
-            case '50d':
-                weatherIcon = rainIcon;
-                break;
-            case '50n':
-                weatherIcon = rainIcon; 
                 break;
             default:
-                weatherIcon = sunnyIcon;
+                weatherIcon = partlyCloudyIcon;
         }
-
         return (
             <div className='currentWeather'>
                 <div className='currentWeatherMain'>
@@ -90,29 +142,21 @@ class CurrentWeather extends React.Component {
                 </div> {/* .currentMain end */}
                 <div className='currentWeatherAside'>
                     <ul className='conditionsList'>
-                        <li className='conditionItem'>
-                            <h3>{this.props.highTemp}&deg;</h3>
-                            <h5>High</h5>
+                        <li className="conditionItem">
+                            <h3>{this.props.realfeel}&deg;</h3>
+                            <h5>Real Feel</h5>
                         </li>
                         <li className='conditionItem'>
                             <h3>{this.props.wind}mph</h3>
                             <h5>Wind</h5>
                         </li>
                         <li className='conditionItem'>
-                            <h3>{this.props.sunrise}</h3>
-                            <h5>Sunrise</h5>
-                        </li>
-                        <li className='conditionItem'>
-                            <h3>{this.props.lowTemp}&deg;</h3>
-                            <h5>Low</h5>
-                        </li>
-                        <li className='conditionItem'>
                             <h3>{this.props.humidity}%</h3>
                             <h5>Humidity</h5>
                         </li>
                         <li className='conditionItem'>
-                            <h3>{this.props.sunset}</h3>
-                            <h5>Sunset</h5>
+                            <h3>{this.props.windGust}mph</h3>
+                            <h5>Wind Gust</h5>
                         </li>
                     </ul>
                 </div> {/* .currentAside end */}
@@ -122,29 +166,15 @@ class CurrentWeather extends React.Component {
 };
 
 const mapStateToProps = (state) => {
-    let sunriseString;
-    let sunsetString;
-    if(state.currentWeather.main) {
-        let sunrise = new Date(state.currentWeather.sys.sunrise * 1000).toLocaleTimeString().split('');
-        sunrise.splice(4,4);
-        sunriseString = sunrise.join('').toLowerCase();
-
-        let sunset = new Date(state.currentWeather.sys.sunset * 1000).toLocaleTimeString().split('');
-        sunset.splice(4,4);
-        sunsetString = sunset.join('').toLowerCase();
-    }
-
-    if(state.currentWeather.main) {
+    if(state.currentWeather.WeatherIcon) {
         return {
-            currentTemp: Math.floor(state.currentWeather.main.temp),
-            currentCondition: state.currentWeather.weather[0].description,
-            highTemp: Math.floor(state.currentWeather.main.temp_max),
-            lowTemp: Math.floor(state.currentWeather.main.temp_min),
-            wind: Math.floor(state.currentWeather.wind.speed),
-            humidity: state.currentWeather.main.humidity,
-            sunrise: sunriseString,
-            sunset: sunsetString,
-            weatherIcon: state.currentWeather.weather[0].icon,
+            currentTemp: state.currentWeather.Temperature.Imperial.Value,
+            currentCondition: state.currentWeather.WeatherText,
+            realfeel: state.currentWeather.RealFeelTemperature.Imperial.Value,
+            wind: Math.ceil(state.currentWeather.Wind.Speed.Imperial.Value),
+            windGust: Math.ceil(state.currentWeather.WindGust.Speed.Imperial.Value),
+            humidity: state.currentWeather.RelativeHumidity,
+            weatherIcon: state.currentWeather.WeatherIcon,
         };
     } else {
         return {};

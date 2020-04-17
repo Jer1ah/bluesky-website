@@ -45,14 +45,33 @@ const hourlyForecastReducer = (state=[], action) => {
     }
 };
 
+const weeklyForecastReducer = (state=[], action) => {
+    switch(action.type) {
+        case "GET_WEEKLY_FORECAST":
+            return action.payload
+        default:
+            return state;
+    }
+};
+
 const userInputReducer = (state='', action) => {
     switch(action.type) {
         case 'GET_INPUT':
-            return action.payload   
+            return action.payload;
         default:
             return state;
     };
 };
+
+const locationReducer = (state={}, action) => {
+    switch(action.type) {
+        case "GET_LOCATION":
+            return action.payload;
+        default: 
+            return state;
+    }
+};
+
 
 export default combineReducers({
     currentDate: dateReducer,
@@ -60,5 +79,7 @@ export default combineReducers({
     days: dayReducer,
     currentWeather: currentWeatherReducer,
     hourlyForecast: hourlyForecastReducer,
-    userInput: userInputReducer
+    weeklyForecast: weeklyForecastReducer,
+    userInput: userInputReducer,
+    locationInfo: locationReducer
 });

@@ -27,13 +27,13 @@
 
 .hourlyForecastListItem img {
     width: 6.6rem;
-    margin-top: .5rem;
+    margin-top: 1rem;
 }
 
 .hourlyForecastListItem h3 {
     font-size: 2rem;
     font-weight: 300;
-    margin: 2.5rem 0 0;
+    margin: 2rem 0 0;
 }
 
 .hourlyForecastListItem h5 {

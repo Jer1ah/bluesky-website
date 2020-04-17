@@ -13,11 +13,10 @@ export const getCurrentHours = () => {
         type: 'GET_HOURS',
         payload: [ 
             moment().format('ha'),
-            moment().add(3, 'hour').format('ha'), 
-            moment().add(6, 'hour').format('ha'), 
-            moment().add(9, 'hour').format('ha'),
-            moment().add(12, 'hour').format('ha'),
-            moment().add(15, 'hour').format('ha')
+            moment().add(1, 'hour').format('ha'), 
+            moment().add(2, 'hour').format('ha'), 
+            moment().add(3, 'hour').format('ha'),
+            moment().add(4, 'hour').format('ha')
         ]
     };
 };
@@ -35,32 +34,32 @@ export const getWeeklyForecast = () => {
     }
 };
 
-export const getCurrentWeather = () => {
+export const getCurrentWeather = (key) => {
     return async (dispatch) => {
-        const data = await axios.get('http://api.openweathermap.org/data/2.5/weather?zip=28205&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial');
-        dispatch({ type: 'GET_CURRENT_WEATHER', payload: data.data });
+        const data = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=yjhc9euukkwR393enGgBNNlSaIA1i0T4&details=true`);
+        dispatch({ type: 'GET_CURRENT_WEATHER', payload: data.data[0] });
     };
 };
 
-export const getCustomCurrentWeather = (zipcode) => {
+export const getLocationInfo = (zipcode) => {
     return async (dispatch) => {
-        const data = await axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial`);
-        dispatch({ type: 'GET_CURRENT_WEATHER', payload: data.data });
+        const data = await axios.get(`http://dataservice.accuweather.com/locations/v1/postalcodes/search?apikey=yjhc9euukkwR393enGgBNNlSaIA1i0T4&q=${zipcode}`);
+        dispatch({ type: "GET_LOCATION", payload: data.data[0] });
     };
 };
 
-export const getHourlyForecast = () => {
+export const getHourlyForecast = (key) => {
     return async (dispatch) => {
-        const data = await axios.get('http://api.openweathermap.org/data/2.5/forecast?zip=28205&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial');
-        dispatch({ type: 'GET_HOURLY', payload: data.data.list });
+        const data = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${key}?apikey=yjhc9euukkwR393enGgBNNlSaIA1i0T4`);
+        dispatch({ type: 'GET_HOURLY', payload: data.data });
     };
 };
 
-export const getCustomHourlyForecast = (zipcode) => {
+export const getWeeklyWeather = (key) => {
     return async (dispatch) => {
-        const data = await axios.get(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipcode}&appid=207ac0eddd67fa374f18b49fb01aa66f&units=imperial`);
-        dispatch({ type: 'GET_HOURLY', payload: data.data.list });
-    };
+        const data = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=yjhc9euukkwR393enGgBNNlSaIA1i0T4&details=true`);
+        dispatch({ type: "GET_WEEKLY_FORECAST", payload: data.data });
+    }
 };
 
 export const updateZipcode = (userInput) => {

@@ -4,11 +4,11 @@ html, body {
     box-sizing: border-box;
     font-size: 10px;
     font-family: 'Spartan';
-    background-color: #3273BF;
+    background-color: #2670BC;
     color: white;
 }
 
 .app {
-    width: 100rem;
+    width: 83rem;
     margin: 3.5rem auto 0;
 }

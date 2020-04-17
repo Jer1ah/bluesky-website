@@ -16,78 +16,135 @@ import snowIcon from '../img/snow.svg';
 
 class HourlyForecast extends React.Component {
     componentDidMount() {
-        this.props.getHourlyForecast();
+        this.props.getHourlyForecast("11727_PC");
         this.props.getCurrentHours();
     }
 
     render() {
         let hourlyForecast;
-        if( this.props.currentHours && this.props.currentTemps[0] ) {
+        if( this.props.currentHours && this.props.currentTemps[1] ) {
             hourlyForecast = this.props.currentHours.map((hour, index) => {
                 let weatherIcon;
-                switch(this.props.currentTemps[index].weather[0].icon) {
-                    case '01d':
+                console.log(this.props.currentTemps[index].WeatherIcon);
+                switch(this.props.currentTemps[index].WeatherIcon) {
+                    case 1:
                         weatherIcon = sunnyIcon;
                         break;
-                    case '01n':
-                        weatherIcon = moonIcon;
+                    case 2:
+                        weatherIcon = sunnyIcon;
                         break;
-                    case '02d':
+                    case 3:
+                        weatherIcon = sunnyIcon;
+                        break;
+                    case 4:
                         weatherIcon = partlyCloudyIcon;
                         break;
-                    case '02n':
+                    case 5:
+                        weatherIcon = partlyCloudyIcon;
+                        break;
+                    case 6:
+                        weatherIcon = partlyCloudyIcon;
+                        break;
+                    case 7:
+                        weatherIcon = cloudsIcon;
+                        break;
+                    case 8:
+                        weatherIcon = cloudsIcon;
+                        break;
+                    case 11:
+                        weatherIcon = cloudsIcon;
+                        break;
+                    case 18:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 12:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 13:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 14:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 24:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 25:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 26:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 29:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 15:
+                        weatherIcon = thunderstormIcon;
+                        break;
+                    case 16:
+                        weatherIcon = thunderstormIcon;
+                        break;
+                    case 17:
+                        weatherIcon = thunderstormIcon;
+                        break;
+                    case 19:
+                        weatherIcon = snowIcon;
+                        break;
+                    case 20:
+                        weatherIcon = snowIcon;
+                        break;
+                    case 21:
+                        weatherIcon = snowIcon;
+                        break;
+                    case 22:
+                        weatherIcon = snowIcon;
+                        break;
+                    case 23:
+                        weatherIcon = snowIcon;
+                        break;
+                    case 33:
+                        weatherIcon = moonIcon;
+                        break;
+                    case 34:
+                        weatherIcon = moonIcon;
+                        break;
+                    case 35:
                         weatherIcon = partlyCloudyNightIcon;
                         break;
-                    case '03d': 
-                        weatherIcon = cloudsIcon;
+                    case 36:
+                        weatherIcon = partlyCloudyNightIcon;
                         break;
-                    case '03n':
-                        weatherIcon = cloudsIcon;
+                    case 37:
+                        weatherIcon = partlyCloudyNightIcon;
                         break;
-                    case '04d':
-                        weatherIcon = cloudsIcon;
+                    case 38:
+                        weatherIcon = partlyCloudyNightIcon;
                         break;
-                    case '04n':
-                        weatherIcon = cloudsIcon;
-                        break;
-                    case '09d':
+                    case 39:
                         weatherIcon = rainIcon;
                         break;
-                    case '09n':
+                    case 40:
                         weatherIcon = rainIcon;
                         break;
-                    case '10d':
-                        weatherIcon = rainIcon;
-                        break;
-                    case '10n':
-                        weatherIcon = rainIcon;
-                        break;
-                    case '11d':
+                    case 41:
                         weatherIcon = thunderstormIcon;
                         break;
-                    case '11n':
+                    case 42:
                         weatherIcon = thunderstormIcon;
                         break;
-                    case '13d':
+                    case 43:
                         weatherIcon = snowIcon;
                         break;
-                    case '13n':
+                    case 44:
                         weatherIcon = snowIcon;
-                        break;
-                    case '50d':
-                        weatherIcon = rainIcon;
-                        break;
-                    case '50n':
-                        weatherIcon = rainIcon; 
                         break;
                     default:
-                        weatherIcon = sunnyIcon;
+                        weatherIcon = partlyCloudyIcon;
                 }
-                
                 return <HourForecast
                             hour={hour}
                             weatherIcon={weatherIcon}
-                            temperature={Math.floor(this.props.currentTemps[index].main.temp)}
+                            temperature={Math.floor(this.props.currentTemps[index].Temperature.Value)}
                         />
                 });
         }

@@ -2,14 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import DailyForecast from '../components/DailyForecast';
-import { getWeeklyForecast } from '../actions';
+import { getWeeklyForecast, getWeeklyWeather } from '../actions';
 import '../css/weeklyForecast.css';
 
 import sunnyIcon from '../img/sun.svg';
-import moonIcon from '../img/moon.svg';
 import cloudsIcon from '../img/clouds.svg';
 import partlyCloudyIcon from '../img/cloudy.svg';
-import partlyCloudyNightIcon from '../img/cloudy-night.svg';
 import rainIcon from '../img/rain.svg';
 import thunderstormIcon from '../img/thunderstorm.svg';
 import snowIcon from '../img/snow.svg';
@@ -17,82 +15,105 @@ import snowIcon from '../img/snow.svg';
 class WeeklyForecast extends React.Component { 
     componentDidMount() {
         this.props.getWeeklyForecast();
+        this.props.getWeeklyWeather("11727_PC");
     }
 
     render() {
         let daily;
-        if( this.props.currentTemps[1] ) {
+        let weatherIcon;
+        if( this.props.dailyConditions ) {
             daily = this.props.days.map((day, index) => {
-                let weatherIcon;
-                switch(this.props.currentTemps[index].weather[0].icon) {
-                    case '01d':
+                console.log(this.props.dailyConditions[index].Day.Icon);
+                switch(this.props.dailyConditions[index].Day.Icon) {
+                    case 1:
                         weatherIcon = sunnyIcon;
                         break;
-                    case '01n':
-                        weatherIcon = moonIcon;
+                    case 2:
+                        weatherIcon = sunnyIcon;
                         break;
-                    case '02d':
+                    case 3:
+                        weatherIcon = sunnyIcon;
+                        break;
+                    case 4:
                         weatherIcon = partlyCloudyIcon;
                         break;
-                    case '02n':
-                        weatherIcon = partlyCloudyNightIcon;
+                    case 5:
+                        weatherIcon = partlyCloudyIcon;
                         break;
-                    case '03d': 
+                    case 6:
+                        weatherIcon = partlyCloudyIcon;
+                        break;
+                    case 7:
                         weatherIcon = cloudsIcon;
                         break;
-                    case '03n':
+                    case 8:
                         weatherIcon = cloudsIcon;
                         break;
-                    case '04d':
+                    case 11:
                         weatherIcon = cloudsIcon;
                         break;
-                    case '04n':
-                        weatherIcon = cloudsIcon;
-                        break;
-                    case '09d':
+                    case 18:
                         weatherIcon = rainIcon;
                         break;
-                    case '09n':
+                    case 12:
                         weatherIcon = rainIcon;
                         break;
-                    case '10d':
+                    case 13:
                         weatherIcon = rainIcon;
                         break;
-                    case '10n':
+                    case 14:
                         weatherIcon = rainIcon;
                         break;
-                    case '11d':
+                    case 24:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 25:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 26:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 29:
+                        weatherIcon = rainIcon;
+                        break;
+                    case 15:
                         weatherIcon = thunderstormIcon;
                         break;
-                    case '11n':
+                    case 16:
                         weatherIcon = thunderstormIcon;
                         break;
-                    case '13d':
+                    case 17:
+                        weatherIcon = thunderstormIcon;
+                        break;
+                    case 19:
                         weatherIcon = snowIcon;
                         break;
-                    case '13n':
+                    case 20:
                         weatherIcon = snowIcon;
                         break;
-                    case '50d':
-                        weatherIcon = rainIcon;
+                    case 21:
+                        weatherIcon = snowIcon;
                         break;
-                    case '50n':
-                        weatherIcon = rainIcon; 
+                    case 22:
+                        weatherIcon = snowIcon;
+                        break;
+                    case 23:
+                        weatherIcon = snowIcon;
                         break;
                     default:
-                        weatherIcon = sunnyIcon;
+                        weatherIcon = partlyCloudyIcon;
                 }
                 return <DailyForecast 
                             day={day}
                             weatherIcon={weatherIcon}
-                            highTemp={Math.ceil(this.props.currentTemps[index + 3].main.temp_max)}
-                            lowTemp={Math.floor(this.props.currentTemps[index + 3].main.temp_min)}
-                            wind={Math.floor(this.props.currentTemps[index + 3].wind.speed)}
-                            humidity={Math.floor(this.props.currentTemps[index + 3].main.humidity)}
+                            lowTemp={this.props.dailyConditions[index].Temperature.Minimum.Value}
+                            highTemp={this.props.dailyConditions[index].Temperature.Maximum.Value}
+                            wind={Math.ceil(this.props.dailyConditions[index].Day.Wind.Speed.Value)}
+                            rain={this.props.dailyConditions[index].Day.RainProbability}
+                            weatherIcon={weatherIcon}
                         />
             });
         }
-
         return (
             <div className='weeklyForecast'>
                 <h1>Next 5 Days</h1>
@@ -105,12 +126,17 @@ class WeeklyForecast extends React.Component {
 };
 
 const mapStateToProps = (state) => {
+    if( state.weeklyForecast ) {
     return {
         days: state.days,
-        currentTemps: state.hourlyForecast
+        dailyConditions: state.weeklyForecast.DailyForecasts
     };
+    } else {
+        return {};
+    }
 };
 
 export default connect(mapStateToProps, {
-    getWeeklyForecast
+    getWeeklyForecast,
+    getWeeklyWeather
 })(WeeklyForecast);
