@@ -72,6 +72,15 @@ const locationReducer = (state={}, action) => {
     }
 };
 
+const locationKeyReducer = (state='11727_PC', action) => {
+    switch(action.type) {
+        case "GET_KEY":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 
 export default combineReducers({
     currentDate: dateReducer,
@@ -81,5 +90,6 @@ export default combineReducers({
     hourlyForecast: hourlyForecastReducer,
     weeklyForecast: weeklyForecastReducer,
     userInput: userInputReducer,
-    locationInfo: locationReducer
+    locationInfo: locationReducer,
+    locationKey: locationKeyReducer
 });

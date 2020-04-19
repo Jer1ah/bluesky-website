@@ -7,7 +7,8 @@ import {
     getHourlyForecast,
     updateZipcode,
     getLocationInfo,
-    getWeeklyWeather
+    getWeeklyWeather,
+    updateLocationKey
  } from '../actions';
 
 import '../css/header.css';
@@ -26,9 +27,9 @@ class Header extends React.Component {
 
     getWeather = (zipcode) => {
         this.props.getLocationInfo(zipcode);
-        this.props.getHourlyForecast(this.props.locationKey);
-        this.props.getCurrentWeather(this.props.locationKey);
-        this.props.getWeeklyWeather(this.props.locationKey);
+        this.props.getWeeklyWeather(zipcode);
+        this.props.getCurrentWeather(zipcode);
+        this.props.getHourlyForecast(zipcode);
     };
 
     render() {
@@ -42,7 +43,10 @@ class Header extends React.Component {
                     <input type='text' 
                            placeholder='Enter zipcode' 
                            ref={this.textInput} 
-                           onKeyUp={() => {this.props.updateZipcode(this.textInput.current.value)}} />
+                           onKeyUp={() => {
+                               this.props.updateZipcode(this.textInput.current.value);
+                        }}
+                    />
                     <button onClick={() => this.getWeather(this.props.userInput)}>Get Weather</button>
                 </div>
             </div>
@@ -57,7 +61,7 @@ const mapStateToProps = (state) => {
             currentCity: state.locationInfo.LocalizedName,
             currentState: state.locationInfo.AdministrativeArea.ID,
             userInput: state.userInput,
-            locationKey: state.locationInfo.Key
+            locationKey: state.locationKey
         }
     } else {
         return {};
@@ -70,5 +74,6 @@ export default connect(mapStateToProps, {
     getHourlyForecast,
     updateZipcode,
     getLocationInfo,
-    getWeeklyWeather
+    getWeeklyWeather,
+    updateLocationKey
 })(Header);

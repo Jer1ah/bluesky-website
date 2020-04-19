@@ -48,6 +48,13 @@ export const getLocationInfo = (zipcode) => {
     };
 };
 
+export const updateLocationKey = (key) => {
+    return {
+        type: "GET_KEY",
+        payload: key
+    }
+};
+
 export const getHourlyForecast = (key) => {
     return async (dispatch) => {
         const data = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${key}?apikey=yjhc9euukkwR393enGgBNNlSaIA1i0T4`);

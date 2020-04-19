@@ -23,7 +23,6 @@ class WeeklyForecast extends React.Component {
         let weatherIcon;
         if( this.props.dailyConditions ) {
             daily = this.props.days.map((day, index) => {
-                console.log(this.props.dailyConditions[index].Day.Icon);
                 switch(this.props.dailyConditions[index].Day.Icon) {
                     case 1:
                         weatherIcon = sunnyIcon;
@@ -111,6 +110,7 @@ class WeeklyForecast extends React.Component {
                             wind={Math.ceil(this.props.dailyConditions[index].Day.Wind.Speed.Value)}
                             rain={this.props.dailyConditions[index].Day.RainProbability}
                             weatherIcon={weatherIcon}
+                            key={this.props.dailyConditions[index].EpochDate}
                         />
             });
         }

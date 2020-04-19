@@ -25,7 +25,6 @@ class HourlyForecast extends React.Component {
         if( this.props.currentHours && this.props.currentTemps[1] ) {
             hourlyForecast = this.props.currentHours.map((hour, index) => {
                 let weatherIcon;
-                console.log(this.props.currentTemps[index].WeatherIcon);
                 switch(this.props.currentTemps[index].WeatherIcon) {
                     case 1:
                         weatherIcon = sunnyIcon;
@@ -145,6 +144,7 @@ class HourlyForecast extends React.Component {
                             hour={hour}
                             weatherIcon={weatherIcon}
                             temperature={Math.floor(this.props.currentTemps[index].Temperature.Value)}
+                            key={this.props.currentTemps[index].EpochDateTime}
                         />
                 });
         }
