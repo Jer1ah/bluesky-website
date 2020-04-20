@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "80df1fe9e2b2bf86a0b264ab6a49a01c",
+    "revision": "6e6593222ab2e94d544fa06b9d1b789d",
     "url": "/bluesky-website/index.html"
   },
   {
-    "revision": "d2ce9de49466a6d8deac",
-    "url": "/bluesky-website/static/css/main.1b3bafd6.chunk.css"
+    "revision": "741f9932ad595c4d401a",
+    "url": "/bluesky-website/static/css/main.19319eeb.chunk.css"
   },
   {
-    "revision": "8e46bfe6833663a8abe4",
-    "url": "/bluesky-website/static/js/2.2647d8aa.chunk.js"
+    "revision": "ebe68896b296f4fe72c6",
+    "url": "/bluesky-website/static/js/2.03c6712a.chunk.js"
   },
   {
     "revision": "f231859d6585c4cd5f80c344783ed269",
-    "url": "/bluesky-website/static/js/2.2647d8aa.chunk.js.LICENSE.txt"
+    "url": "/bluesky-website/static/js/2.03c6712a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d2ce9de49466a6d8deac",
-    "url": "/bluesky-website/static/js/main.5e44dc58.chunk.js"
+    "revision": "741f9932ad595c4d401a",
+    "url": "/bluesky-website/static/js/main.4497a1ad.chunk.js"
   },
   {
     "revision": "b47923f55ac5ae3141e8",

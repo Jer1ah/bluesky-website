@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/bluesky-website/static/css/main.1b3bafd6.chunk.css",
-    "main.js": "/bluesky-website/static/js/main.5e44dc58.chunk.js",
-    "main.js.map": "/bluesky-website/static/js/main.5e44dc58.chunk.js.map",
+    "main.css": "/bluesky-website/static/css/main.19319eeb.chunk.css",
+    "main.js": "/bluesky-website/static/js/main.4497a1ad.chunk.js",
+    "main.js.map": "/bluesky-website/static/js/main.4497a1ad.chunk.js.map",
     "runtime-main.js": "/bluesky-website/static/js/runtime-main.33587cf8.js",
     "runtime-main.js.map": "/bluesky-website/static/js/runtime-main.33587cf8.js.map",
-    "static/js/2.2647d8aa.chunk.js": "/bluesky-website/static/js/2.2647d8aa.chunk.js",
-    "static/js/2.2647d8aa.chunk.js.map": "/bluesky-website/static/js/2.2647d8aa.chunk.js.map",
+    "static/js/2.03c6712a.chunk.js": "/bluesky-website/static/js/2.03c6712a.chunk.js",
+    "static/js/2.03c6712a.chunk.js.map": "/bluesky-website/static/js/2.03c6712a.chunk.js.map",
     "index.html": "/bluesky-website/index.html",
-    "precache-manifest.e9bb2ce9151fc113212357319cc4f122.js": "/bluesky-website/precache-manifest.e9bb2ce9151fc113212357319cc4f122.js",
+    "precache-manifest.65a6a59d8061ad14f554a03c3c09e290.js": "/bluesky-website/precache-manifest.65a6a59d8061ad14f554a03c3c09e290.js",
     "service-worker.js": "/bluesky-website/service-worker.js",
-    "static/css/main.1b3bafd6.chunk.css.map": "/bluesky-website/static/css/main.1b3bafd6.chunk.css.map",
-    "static/js/2.2647d8aa.chunk.js.LICENSE.txt": "/bluesky-website/static/js/2.2647d8aa.chunk.js.LICENSE.txt",
+    "static/css/main.19319eeb.chunk.css.map": "/bluesky-website/static/css/main.19319eeb.chunk.css.map",
+    "static/js/2.03c6712a.chunk.js.LICENSE.txt": "/bluesky-website/static/js/2.03c6712a.chunk.js.LICENSE.txt",
     "static/media/clouds.svg": "/bluesky-website/static/media/clouds.3626d665.svg",
     "static/media/cloudy-night.svg": "/bluesky-website/static/media/cloudy-night.dc0f2f9e.svg",
     "static/media/cloudy.svg": "/bluesky-website/static/media/cloudy.ee81fe3e.svg",
@@ -23,8 +23,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.33587cf8.js",
-    "static/js/2.2647d8aa.chunk.js",
-    "static/css/main.1b3bafd6.chunk.css",
-    "static/js/main.5e44dc58.chunk.js"
+    "static/js/2.03c6712a.chunk.js",
+    "static/css/main.19319eeb.chunk.css",
+    "static/js/main.4497a1ad.chunk.js"
   ]
 }
