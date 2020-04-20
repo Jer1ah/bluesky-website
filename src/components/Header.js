@@ -25,11 +25,14 @@ class Header extends React.Component {
         this.props.getCurrentWeather("11727_PC");
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.props.getWeeklyWeather(nextProps.locationKey);
+        this.props.getCurrentWeather(nextProps.locationKey);
+        this.props.getHourlyForecast(nextProps.locationKey);
+    }
+
     getWeather = (zipcode) => {
         this.props.getLocationInfo(zipcode);
-        this.props.getWeeklyWeather(zipcode);
-        this.props.getCurrentWeather(zipcode);
-        this.props.getHourlyForecast(zipcode);
     };
 
     render() {
@@ -43,11 +46,8 @@ class Header extends React.Component {
                     <input type='text' 
                            placeholder='Enter zipcode' 
                            ref={this.textInput} 
-                           onKeyUp={() => {
-                               this.props.updateZipcode(this.textInput.current.value);
-                        }}
                     />
-                    <button onClick={() => this.getWeather(this.props.userInput)}>Get Weather</button>
+                    <button onClick={() => this.getWeather(this.textInput.current.value)}>Get Weather</button>
                 </div>
             </div>
         );
@@ -61,7 +61,7 @@ const mapStateToProps = (state) => {
             currentCity: state.locationInfo.LocalizedName,
             currentState: state.locationInfo.AdministrativeArea.ID,
             userInput: state.userInput,
-            locationKey: state.locationKey
+            locationKey: state.locationInfo.Key
         }
     } else {
         return {};
