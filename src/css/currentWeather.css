@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: white solid .1rem;
+    border-right: white solid .2rem;
 }
 
 .currentWeatherMain img {
